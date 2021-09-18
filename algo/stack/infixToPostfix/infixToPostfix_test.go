@@ -24,8 +24,8 @@ func TestInfixToPostfix(t *testing.T) {
 	})
 
 	t.Run("test3", func(subtest *testing.T) {
-		expected := ""
-		actual := infixToPostfix("10 + 3 * 5 / (16 - 4")
+		expected := "10  3  5 * 16  4 - / +"
+		actual := infixToPostfix("10 + 3 * 5 / ( 16 - 4 )")
 
 		if expected != actual {
 			subtest.Errorf("Expected %q but got %q", expected, actual)
