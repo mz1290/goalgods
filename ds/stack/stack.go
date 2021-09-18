@@ -1,4 +1,4 @@
-package main
+package stack
 
 import "fmt"
 
@@ -62,22 +62,4 @@ func (s *Stack) Print() {
 		fmt.Println(current.value)
 		current = current.next
 	}
-}
-
-func main() {
-	s := new(Stack)
-
-	fmt.Println(s.IsEmpty())
-	s.Push(4)
-	s.Push("dog")
-	fmt.Println(s.Peek())
-	s.Push(true)
-	fmt.Println(s.Size())
-	fmt.Println(s.IsEmpty())
-	s.Push(8.4)
-	fmt.Printf("\nContents:\n")
-	s.Print()
-	fmt.Println(s.Pop())
-	fmt.Println(s.Pop())
-	fmt.Println(s.Size())
 }
