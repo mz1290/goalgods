@@ -10,7 +10,7 @@ func TestSymbolCheckerValid(t *testing.T) {
 		actual := symbolChecker(("{({([][])}())}"))
 
 		if expected != actual {
-			t.Errorf("Expected true but got false")
+			subtest.Errorf("Expected true but got false")
 		}
 	})
 }
@@ -21,7 +21,7 @@ func TestCheckerInvalid(t *testing.T) {
 		actual := symbolChecker(("[{()])"))
 
 		if expected != actual {
-			t.Errorf("Expected false but got true")
+			subtest.Errorf("Expected false but got true")
 		}
 	})
 }

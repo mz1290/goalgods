@@ -10,7 +10,7 @@ func TestParCheckerValid(t *testing.T) {
 		actual := parChecker(("((()))"))
 
 		if expected != actual {
-			t.Errorf("Expected true but got false")
+			subtest.Errorf("Expected true but got false")
 		}
 	})
 
@@ -19,7 +19,7 @@ func TestParCheckerValid(t *testing.T) {
 		actual := parChecker(("((()()))"))
 
 		if expected != actual {
-			t.Errorf("Expected true but got false")
+			subtest.Errorf("Expected true but got false")
 		}
 	})
 }
@@ -30,7 +30,7 @@ func TestParCheckerInvalid(t *testing.T) {
 		actual := parChecker(("(()"))
 
 		if expected != actual {
-			t.Errorf("Expected false but got true")
+			subtest.Errorf("Expected false but got true")
 		}
 	})
 
@@ -39,7 +39,7 @@ func TestParCheckerInvalid(t *testing.T) {
 		actual := parChecker((")("))
 
 		if expected != actual {
-			t.Errorf("Expected false but got true")
+			subtest.Errorf("Expected false but got true")
 		}
 	})
 }

@@ -10,7 +10,7 @@ func TestBaseConverterValid(t *testing.T) {
 		actual := baseConverter(25, 2)
 
 		if expected != actual {
-			t.Errorf("Expected %s but got %s", expected, actual)
+			subtest.Errorf("Expected %s but got %s", expected, actual)
 		}
 	})
 
@@ -19,7 +19,7 @@ func TestBaseConverterValid(t *testing.T) {
 		actual := baseConverter(25, 16)
 
 		if expected != actual {
-			t.Errorf("Expected %s but got %s", expected, actual)
+			subtest.Errorf("Expected %s but got %s", expected, actual)
 		}
 	})
 }
@@ -30,7 +30,7 @@ func TestBaseConverterInalid(t *testing.T) {
 		actual := baseConverter(25, 3)
 
 		if expected != actual {
-			t.Errorf("Expected %s but got %s", expected, actual)
+			subtest.Errorf("Expected %s but got %s", expected, actual)
 		}
 	})
 }
