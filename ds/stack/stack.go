@@ -45,7 +45,7 @@ func (s *Stack) Pop() interface{} {
 	return value
 }
 
-// Get the value of the top item in the stack.
+// Get the value of the top item in the stack. Do not remove.
 func (s *Stack) Peek() interface{} {
 	return s.top.value
 }
