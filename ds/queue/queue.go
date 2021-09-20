@@ -25,7 +25,7 @@ func (q *Queue) Enqueue(value interface{}) {
 	if q.IsEmpty() {
 		q.front = newItem
 		q.rear = newItem
-	} else { // Add new item at end of queu
+	} else { // Add new item at end of queue
 		q.rear.next = newItem
 		q.rear = newItem
 	}
