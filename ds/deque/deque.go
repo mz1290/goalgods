@@ -104,7 +104,7 @@ func (d *Deque) PopBack() interface{} {
 	return value
 }
 
-// Get the value at the right of deque. Do not remove.
+// Get the value at the front of deque. Do not remove.
 func (d *Deque) Front() interface{} {
 	if d.IsEmpty() {
 		return nil
@@ -113,7 +113,7 @@ func (d *Deque) Front() interface{} {
 	return d.frontSentinel.next.value
 }
 
-// Get the value at the left of deque. Do not remove.
+// Get the value at the back of deque. Do not remove.
 func (d *Deque) Back() interface{} {
 	if d.IsEmpty() {
 		return nil
