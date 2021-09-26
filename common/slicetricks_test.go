@@ -134,3 +134,20 @@ func TestDelete(t *testing.T) {
 		}
 	}
 }
+
+func TestReverse(t *testing.T) {
+	test := []interface{}{1, 2, 3, 4, 5}
+	Reverse(test)
+	expected := []interface{}{5, 4, 3, 2, 1}
+
+	if len(expected) != len(test) {
+		t.Fatalf("Length of expected (%d) not equal to length of actual (%d)",
+			expected, test)
+	}
+
+	for i, v := range expected {
+		if v != test[i] {
+			t.Fatalf("Expected %d but got %d", expected, test)
+		}
+	}
+}

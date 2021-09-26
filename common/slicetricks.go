@@ -64,3 +64,11 @@ func Delete(slice []interface{}, idx int) []interface{} {
 	// return new slice excluding zeroed value
 	return slice[:len(slice)-1]
 }
+
+// Reverse contents of slice in-place
+func Reverse(slice []interface{}) {
+	for i := len(slice)/2 - 1; i >= 0; i-- {
+		opp := len(slice) - 1 - i
+		slice[i], slice[opp] = slice[opp], slice[i]
+	}
+}
