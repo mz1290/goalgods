@@ -1,3 +1,4 @@
+// https://go.dev/blog/slices-intro
 // https://github.com/golang/go/wiki/SliceTricks
 package common
 
@@ -71,4 +72,27 @@ func Reverse(slice []interface{}) {
 		opp := len(slice) - 1 - i
 		slice[i], slice[opp] = slice[opp], slice[i]
 	}
+}
+
+// Filter returns a new slice holding only
+// the elements of s that satisfy fn()
+func FilterNew(s []interface{}, fn func(interface{}) bool) []interface{} {
+	var p []interface{}
+	for _, v := range s {
+		if fn(v) {
+			p = append(p, v)
+		}
+	}
+	return p
+}
+
+func FilterInPlace(slice []interface{}, fn func(interface{}) bool) []interface{} {
+	n := 0
+	for _, x := range slice {
+		if fn(x) {
+			slice[n] = x
+			n++
+		}
+	}
+	return slice[:n]
 }
