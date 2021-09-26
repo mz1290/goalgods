@@ -47,3 +47,20 @@ func Insert(slice []interface{}, idx int, vector ...interface{}) []interface{} {
 	copy(slice2[idx+len(vector):], slice[idx:])
 	return slice2
 }
+
+func Copy(slice []interface{}) []interface{} {
+	newSlice := make([]interface{}, len(slice))
+	copy(newSlice, slice)
+	return newSlice
+}
+
+func Delete(slice []interface{}, idx int) []interface{} {
+	// Shift elements up to perform delete
+	copy(slice[idx:], slice[idx+1:])
+
+	// Set last copied, initialized, item to zero value for gc
+	slice[len(slice)-1] = nil
+
+	// return new slice excluding zeroed value
+	return slice[:len(slice)-1]
+}

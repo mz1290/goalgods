@@ -80,3 +80,57 @@ func TestInsert(t *testing.T) {
 		}
 	})
 }
+
+func TestCopy(t *testing.T) {
+
+	t.Run("copy ints", func(subtest *testing.T) {
+		test := []interface{}{1, 2, 3, 4, 5}
+		actual := Copy(test)
+		expected := []interface{}{1, 2, 3, 4, 5}
+
+		if len(expected) != len(actual) {
+			subtest.Fatalf("Length of expected (%d) not equal to length of actual (%d)",
+				expected, actual)
+		}
+
+		for i, v := range expected {
+			if v != actual[i] {
+				subtest.Fatalf("Expected %d but got %d", expected, actual)
+			}
+		}
+	})
+
+	t.Run("copy strings", func(subtest *testing.T) {
+		test := []interface{}{"h", "e", "l", "l", "o"}
+		actual := Copy(test)
+		expected := []interface{}{"h", "e", "l", "l", "o"}
+
+		if len(expected) != len(actual) {
+			subtest.Fatalf("Length of expected (%d) not equal to length of actual (%d)",
+				expected, actual)
+		}
+
+		for i, v := range expected {
+			if v != actual[i] {
+				subtest.Fatalf("Expected %d but got %d", expected, actual)
+			}
+		}
+	})
+}
+
+func TestDelete(t *testing.T) {
+	test := []interface{}{1, 2, 3, 4, 5}
+	actual := Delete(test, 2)
+	expected := []interface{}{1, 2, 4, 5}
+
+	if len(expected) != len(actual) {
+		t.Fatalf("Length of expected (%d) not equal to length of actual (%d)",
+			expected, actual)
+	}
+
+	for i, v := range expected {
+		if v != actual[i] {
+			t.Fatalf("Expected %d but got %d", expected, actual)
+		}
+	}
+}
