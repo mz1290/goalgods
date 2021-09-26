@@ -22,3 +22,28 @@ func PushFront(slice []interface{}, val interface{}) []interface{} {
 func PopFront(slice []interface{}) (interface{}, []interface{}) {
 	return slice[0], slice[1:]
 }
+
+func InsertLaziest(slice []interface{}, idx int, val interface{}) []interface{} {
+	return append(slice[:idx], append([]interface{}{val}, slice[idx:]...)...)
+}
+
+func InsertLazy(slice []interface{}, idx int, val interface{}) []interface{} {
+	slice = append(slice, nil)
+	copy(slice[idx+1:], slice[idx:])
+	slice[idx] = val
+	return slice
+}
+
+func Insert(slice []interface{}, idx int, vector ...interface{}) []interface{} {
+	if n := len(slice) + len(vector); n <= cap(slice) {
+		slice2 := slice[:n]
+		copy(slice2[idx+len(vector):], slice[idx:])
+		copy(slice2[idx:], vector)
+		return slice2
+	}
+	slice2 := make([]interface{}, len(slice)+len(vector))
+	copy(slice2, slice[:idx])
+	copy(slice2[idx:], vector)
+	copy(slice2[idx+len(vector):], slice[idx:])
+	return slice2
+}
