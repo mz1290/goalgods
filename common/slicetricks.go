@@ -2,6 +2,20 @@
 // https://github.com/golang/go/wiki/SliceTricks
 package common
 
+import (
+	"fmt"
+	"reflect"
+	"unsafe"
+)
+
+// https://stackoverflow.com/a/54196005/463785
+// Prints out address of underlying array. Can be used to show when slice is
+// being copied to new memory.
+func GetSliceHeader(slice *[]interface{}) string {
+	sh := (*reflect.SliceHeader)(unsafe.Pointer(slice))
+	return fmt.Sprintf("%+v", sh)
+}
+
 // Push to the end of a slice
 func Push(slice []interface{}, val interface{}) []interface{} {
 	return append(slice, val)
