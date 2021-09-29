@@ -104,6 +104,39 @@ func TestPushFront(t *testing.T) {
 	})
 }
 
+func TestPopFront(t *testing.T) {
+	t.Run("pop true", func(subtest *testing.T) {
+		test := make([]interface{}, 5, 10)
+		copy(test, []interface{}{1, 2, 3, 4, 5})
+		expected := []interface{}{2, 3, 4, 5}
+		_, test = PopFront(test)
+
+		if len(expected) != len(test) {
+			subtest.Fatalf("Length of expected (%d) not equal to length of actual (%d)",
+				expected, test)
+		}
+
+		for i, v := range expected {
+			if v != test[i] {
+				subtest.Fatalf("Expected %d but got %d", expected, test)
+			}
+		}
+	})
+
+	t.Run("pop empty", func(subtest *testing.T) {
+		var test []interface{}
+		val, test := PopFront(test)
+
+		if val != nil {
+			subtest.Fatalf("Expected nil element")
+		}
+
+		if test != nil {
+			subtest.Fatalf("Expected nil slice")
+		}
+	})
+}
+
 func TestInsert(t *testing.T) {
 	t.Run("insert true", func(subtest *testing.T) {
 		test := make([]interface{}, 5, 10)
@@ -133,6 +166,40 @@ func TestInsert(t *testing.T) {
 
 		if err == nil {
 			subtest.Fatal("Expected error: Insert exceeds slice capacity")
+		}
+	})
+}
+
+func TestRemove(t *testing.T) {
+	t.Run("pop true", func(subtest *testing.T) {
+		test := make([]interface{}, 5, 10)
+		copy(test, []interface{}{1, 2, 3, 4, 5})
+		expected := []interface{}{1, 2, 4, 5}
+
+		test = Remove(test, 2)
+
+		if len(expected) != len(test) {
+			subtest.Fatalf("Length of expected (%d) not equal to length of actual (%d)",
+				expected, test)
+		}
+
+		for i, v := range expected {
+			if v != test[i] {
+				subtest.Fatalf("Expected %d but got %d", expected, test)
+			}
+		}
+	})
+
+	t.Run("pop empty", func(subtest *testing.T) {
+		var test []interface{}
+		val, test := PopFront(test)
+
+		if val != nil {
+			subtest.Fatalf("Expected nil element")
+		}
+
+		if test != nil {
+			subtest.Fatalf("Expected nil slice")
 		}
 	})
 }

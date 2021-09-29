@@ -49,3 +49,26 @@ func PushFront(slice []interface{}, val interface{}) ([]interface{}, error) {
 	inserted, _ := Insert(slice, 0, val)
 	return inserted, nil
 }
+
+func PopFront(slice []interface{}) (interface{}, []interface{}) {
+	if slice == nil {
+		return nil, nil
+	}
+
+	return slice[0], slice[1:]
+}
+
+func Remove(slice []interface{}, idx int) []interface{} {
+	if slice == nil {
+		return nil
+	}
+
+	// Shift elements up to perform delete
+	copy(slice[idx:], slice[idx+1:])
+
+	// Set last copied, initialized, item to zero value for gc
+	slice[len(slice)-1] = nil
+
+	// return new slice excluding zeroed value
+	return slice[:len(slice)-1]
+}
