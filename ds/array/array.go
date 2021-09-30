@@ -72,3 +72,23 @@ func Remove(slice []interface{}, idx int) []interface{} {
 	// return new slice excluding zeroed value
 	return slice[:len(slice)-1]
 }
+
+// If value exists in sorted slice, returns the index. If not, returns -1.
+func BinarySearch(slice []int, val int) int {
+	low := 0
+	high := len(slice) - 1
+
+	for low <= high {
+		mid := (low + high) / 2
+
+		if slice[mid] == val {
+			return mid
+		} else if slice[mid] < val {
+			low = mid + 1
+		} else {
+			high = mid - 1
+		}
+	}
+
+	return -1
+}

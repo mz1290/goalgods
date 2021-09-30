@@ -203,3 +203,14 @@ func TestRemove(t *testing.T) {
 		}
 	})
 }
+
+func TestBinarySearch(t *testing.T) {
+	test := []int{1, 2, 9, 20, 31, 45, 63, 70, 100}
+	val := 63
+	expected := 6
+	actual := BinarySearch(test, val)
+
+	if expected != actual {
+		t.Fatalf("Expected %d but got %d", expected, actual)
+	}
+}
