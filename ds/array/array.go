@@ -92,3 +92,38 @@ func BinarySearch(slice []int, val int) int {
 
 	return -1
 }
+
+func getMinAndMax(slice []int) (int, int) {
+	min := slice[0]
+	max := slice[0]
+
+	for _, value := range slice {
+		if value < min {
+			min = value
+		}
+		if value > max {
+			max = value
+		}
+	}
+	return min, max
+}
+
+func getMinAndMaxIdx(slice []int) (int, int) {
+	min := slice[0]
+	max := slice[0]
+	minIdx := 0
+	maxIdx := 0
+
+	for i, value := range slice {
+		if value < min {
+			min = value
+			minIdx = i
+		}
+
+		if value > max {
+			max = value
+			maxIdx = i
+		}
+	}
+	return minIdx, maxIdx
+}

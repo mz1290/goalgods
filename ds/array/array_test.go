@@ -214,3 +214,35 @@ func TestBinarySearch(t *testing.T) {
 		t.Fatalf("Expected %d but got %d", expected, actual)
 	}
 }
+
+func TestMinAndMax(t *testing.T) {
+	t.Run("value", func(subtest *testing.T) {
+		test := []int{0, 2, 3, 4, 5, 2, 1, 0}
+		expectedmin := 0
+		expectedmax := 5
+
+		min, max := getMinAndMax(test)
+		if min != expectedmin {
+			subtest.Fatalf("epected %d but got %d", expectedmin, min)
+		}
+
+		if max != expectedmax {
+			subtest.Fatalf("epected %d but got %d", expectedmax, max)
+		}
+	})
+
+	t.Run("index", func(subtest *testing.T) {
+		test := []int{0, 2, 3, 4, 5, 2, 1, 0}
+		expectedminidx := 0 // first encounter
+		expectedmaxidx := 4
+
+		minidx, maxidx := getMinAndMaxIdx(test)
+		if minidx != expectedminidx {
+			subtest.Fatalf("epected %d but got %d", expectedminidx, minidx)
+		}
+
+		if maxidx != expectedmaxidx {
+			subtest.Fatalf("epected %d but got %d", expectedmaxidx, maxidx)
+		}
+	})
+}
